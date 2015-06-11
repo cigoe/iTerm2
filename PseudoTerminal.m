@@ -361,8 +361,7 @@ NSString *sessionsKey = @"sessions";
 
     PtyLog(@"initWithSmartLayout - initWithContentRect");
     // create the window programmatically with appropriate style mask
-    NSUInteger styleMask = NSTitledWindowMask |
-                           NSClosableWindowMask |
+    NSUInteger styleMask = NSClosableWindowMask |
                            NSMiniaturizableWindowMask |
                            NSResizableWindowMask |
                            NSTexturedBackgroundWindowMask;
@@ -1128,7 +1127,7 @@ NSString *sessionsKey = @"sessions";
     if ([[PreferencePanel sharedInstance] windowNumber]) {
         title = [NSString stringWithFormat:@"%d. %@", number_+1, title];
     }
-    
+
     // In bug 2593, we see a crazy thing where setting the window title right
     // after a window is created causes it to have the wrong background color.
     // A delay of 0 doesn't fix it. I'm at wit's end here, so this will have to
@@ -2283,7 +2282,7 @@ NSString *sessionsKey = @"sessions";
             menuBarIsVisible = YES;
         }
     }
-    
+
     return menuBarIsVisible ? frameMinusMenuBar : screenFrame;
 }
 
@@ -4482,7 +4481,7 @@ NSString *sessionsKey = @"sessions";
 - (void)_refreshTerminal:(NSNotification *)aNotification
 {
     PtyLog(@"_refreshTerminal - calling fitWindowToTabs");
-    
+
     // If hiding of menu bar changed.
     if ([self fullScreen] && ![self lionFullScreen]) {
         if ([[self window] isKeyWindow]) {
